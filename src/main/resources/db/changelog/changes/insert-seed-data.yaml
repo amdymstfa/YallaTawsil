@@ -1,0 +1,26 @@
+databaseChangeLog:
+  - changeSet:
+      id: 007-insert-seed-data
+      author: moustapha
+      changes:
+        - insert:
+            tableName: vehicles
+            columns:
+              - column:
+                  name: license_plate
+                  value: "ABC123"
+              - column:
+                  name: model
+                  value: "Truck"
+              - column:
+                  name: capacity
+                  valueNumeric: 1000
+        - insert:
+            tableName: warehouses
+            columns:
+              - column:
+                  name: name
+                  value: "Main Warehouse"
+              - column:
+                  name: location
+                  value: "123 Main Street"
