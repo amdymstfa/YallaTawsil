@@ -1,0 +1,35 @@
+databaseChangeLog:
+  - changeSet:
+      id: 006-add-constraints-indexes
+      author: moustapha
+      changes:
+        - addForeignKeyConstraint:
+            baseTableName: deliveries
+            baseColumnNames: vehicle_id
+            referencedTableName: vehicles
+            referencedColumnNames: id
+            constraintName: fk_delivery_vehicle
+        - addForeignKeyConstraint:
+            baseTableName: deliveries
+            baseColumnNames: warehouse_id
+            referencedTableName: warehouses
+            referencedColumnNames: id
+            constraintName: fk_delivery_warehouse
+        - addForeignKeyConstraint:
+            baseTableName: tours
+            baseColumnNames: vehicle_id
+            referencedTableName: vehicles
+            referencedColumnNames: id
+            constraintName: fk_tour_vehicle
+        - addForeignKeyConstraint:
+            baseTableName: tour_deliveries
+            baseColumnNames: tour_id
+            referencedTableName: tours
+            referencedColumnNames: id
+            constraintName: fk_tour_delivery
+        - addForeignKeyConstraint:
+            baseTableName: tour_deliveries
+            baseColumnNames: delivery_id
+            referencedTableName: deliveries
+            referencedColumnNames: id
+            constraintName: fk_tour_delivery_delivery
