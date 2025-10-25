@@ -1,0 +1,15 @@
+databaseChangeLog:
+  - include:
+      file: db/changelog/changes/create-vehicles-table.yaml
+  - include:
+      file: db/changelog/changes/create-warehouses-table.yaml
+  - include:
+      file: db/changelog/changes/create-deliveries-table.yaml
+  - include:
+      file: db/changelog/changes/create-tours-table.yaml
+  - include:
+      file: db/changelog/changes/create-tour-deliveries.yaml
+  - include:
+      file: db/changelog/changes/add-constraints-indexes.yaml
+  - include:
+      file: db/changelog/changes/insert-seed-data.yaml
