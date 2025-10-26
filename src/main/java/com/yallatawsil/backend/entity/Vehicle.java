@@ -16,6 +16,7 @@ import lombok.Setter;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.stream.DoubleStream;
 
 @Entity
 @Table(name = "vehicles")
@@ -89,13 +90,13 @@ public class Vehicle {
         if (deliveries.size() > this.maxDeliveries){return false ;}
 
         double totalWeight = deliveries.stream()
-                .mapToDouble(Delivery::getWeight);
+                .mapToDouble(Delivery::getWeight)
                 .sum();
 
         double totalVolume = deliveries.stream()
                 .mapToDouble(Delivery::getVolume)
                 .sum();
 
-        return totalWeight <= this.maxWeight && totalVolume <= this.maxVolume ;
+        return totalWeight <= this.maxWeight && totalVolume <= this.maxVolume;
     }
 }
