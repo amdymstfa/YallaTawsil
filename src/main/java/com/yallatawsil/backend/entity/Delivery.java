@@ -3,9 +3,7 @@ package com.yallatawsil.backend.entity;
 import com.yallatawsil.backend.entity.enums.DeliveryStatus;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -16,7 +14,8 @@ import java.time.LocalTime;
  */
 @Entity
 @Table(name = "deliveries")
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class Delivery {
@@ -49,7 +48,7 @@ public class Delivery {
     @NotNull(message = "Volume is required")
     @DecimalMin(value = "0.01", message = "Volume must be greater than 0")
     @Column(nullable = false)
-    private Double volume;  
+    private Double volume;
 
     @NotNull(message = "Preferred start time is required")
     @Column
