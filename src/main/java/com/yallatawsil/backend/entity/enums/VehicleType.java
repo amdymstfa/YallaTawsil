@@ -12,7 +12,7 @@ public enum VehicleType {
 
     private final Double defaultMaxWeight ;
     private final Double defaultMaxVolume ;
-    private final int defaultMaxDeliveries ;
+    private final Integer defaultMaxDeliveries ;
 
     VehicleType(Double defaultMaxWeight, Double defaultMaxVolume, int defaultMaxDeliveries){
         this.defaultMaxWeight = defaultMaxWeight ;
