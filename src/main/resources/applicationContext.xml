@@ -61,7 +61,7 @@
           class="com.yallatawsil.backend.mapper.DeliveryMapperImpl"/>
 
     <bean id="tourMapper"
-          class="com.yallatawsil.backend.mapper.TourMapper">
+          class="com.yallatawsil.backend.mapper.TourMapperImpl">
         <constructor-arg ref="deliveryMapper"/>
         <constructor-arg ref="vehicleMapper"/>
         <constructor-arg ref="warehouseMapper"/>
