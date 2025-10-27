@@ -52,13 +52,13 @@
     <!-- MAPPERS (DTO <-> ENTITY Conversion Layer)                    -->
     <!-- ============================================================ -->
     <bean id="vehicleMapper"
-          class="com.yallatawsil.backend.mapper.VehicleMapper"/>
+          class="com.yallatawsil.backend.mapper.VehicleMapperImpl"/>
 
     <bean id="warehouseMapper"
-          class="com.yallatawsil.backend.mapper.WarehouseMapper"/>
+          class="com.yallatawsil.backend.mapper.WarehouseMapperImpl"/>
 
     <bean id="deliveryMapper"
-          class="com.yallatawsil.backend.mapper.DeliveryMapper"/>
+          class="com.yallatawsil.backend.mapper.DeliveryMapperImpl"/>
 
     <bean id="tourMapper"
           class="com.yallatawsil.backend.mapper.TourMapper">
