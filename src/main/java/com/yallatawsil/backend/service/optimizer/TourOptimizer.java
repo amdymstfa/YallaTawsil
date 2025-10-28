@@ -1,21 +1,29 @@
-package com.yallatawsil.backend.service.optimizer ;
+package com.yallatawsil.backend.service.optimizer;
 
 import com.yallatawsil.backend.entity.Delivery;
 import com.yallatawsil.backend.entity.Vehicle;
 import com.yallatawsil.backend.entity.Warehouse;
+import com.yallatawsil.backend.service.distance.DistanceCalculator;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public interface TourOptimizer {
+@Getter
+@AllArgsConstructor
+public abstract class TourOptimizer {
+
+    protected final DistanceCalculator distanceCalculator;
 
     /**
-     * Calculate the optimize tour for a given delivery
-     * @param warehouse Starting and ending point
+     * Calculate optimal tour for given deliveries
+     * @param warehouse Starting/ending point
      * @param deliveries List of deliveries to optimize
-     * @param vehicle vehicle Vehicle constraints
+     * @param vehicle Vehicle constraints
      * @return Ordered list of deliveries
      */
-    List<Delivery> calculateOptimizedTour(Warehouse warehouse, List<Delivery> deliveries, Vehicle vehicle);
+    public abstract List<Delivery> calculateOptimalTour(Warehouse warehouse, List<Delivery> deliveries, Vehicle vehicle);
 
     /**
      * Calculate total distance for an ordered list of deliveries
@@ -23,6 +31,48 @@ public interface TourOptimizer {
      * @param orderedDeliveries Deliveries in tour order
      * @return Total distance in km
      */
+    public double getTotalDistance(Warehouse warehouse, List<Delivery> orderedDeliveries) {
+        if (orderedDeliveries == null || orderedDeliveries.isEmpty()) {
+            return 0.0;
+        }
 
-    Double calculateTotalDistance(Warehouse warehouse ,List<Delivery> orderedDeliveries);
+        double totalDistance = 0.0;
+        double currentLat = warehouse.getLatitude();
+        double currentLon = warehouse.getLongitude();
+
+        for (Delivery delivery : orderedDeliveries) {
+            totalDistance += distanceCalculator.calculateDistance(
+                    currentLat, currentLon,
+                    delivery.getLatitude(), delivery.getLongitude()
+            );
+            currentLat = delivery.getLatitude();
+            currentLon = delivery.getLongitude();
+        }
+
+        // Return to warehouse
+        totalDistance += distanceCalculator.calculateDistance(
+                currentLat, currentLon,
+                warehouse.getLatitude(), warehouse.getLongitude()
+        );
+
+        return totalDistance;
+    }
+
+    /**
+     * Validate deliveries and vehicle capacity
+     */
+    protected void validateInput(Warehouse warehouse, List<Delivery> deliveries, Vehicle vehicle) {
+        if (warehouse == null) {
+            throw new IllegalArgumentException("Warehouse cannot be null");
+        }
+        if (deliveries == null || deliveries.isEmpty()) {
+            throw new IllegalArgumentException("Deliveries list cannot be null or empty");
+        }
+        if (vehicle == null) {
+            throw new IllegalArgumentException("Vehicle cannot be null");
+        }
+        if (!vehicle.canAccommodate(deliveries)) {
+            throw new IllegalArgumentException("Vehicle cannot accommodate all deliveries");
+        }
+    }
 }
