@@ -74,29 +74,28 @@
 
     <!-- Vehicle Service -->
     <bean id="vehicleService"
-          class="com.yallatawsil.backend.service.VehicleServiceImpl">
+          class="com.yallatawsil.backend.service.InterfaceEntityImpl.VehicleServiceImpl">
         <constructor-arg ref="vehicleRepository"/>
         <constructor-arg ref="vehicleMapper"/>
-        <constructor-arg ref="tourRepository"/>
     </bean>
 
     <!-- Warehouse Service -->
     <bean id="warehouseService"
-          class="com.yallatawsil.backend.service.WarehouseServiceImpl">
+          class="com.yallatawsil.backend.service.InterfaceEntityImpl.WarehouseServiceImpl">
         <constructor-arg ref="warehouseRepository"/>
         <constructor-arg ref="warehouseMapper"/>
     </bean>
 
     <!-- Delivery Service -->
     <bean id="deliveryService"
-          class="com.yallatawsil.backend.service.DeliveryServiceImpl">
+          class="com.yallatawsil.backend.service.InterfaceEntityImpl.DeliveryServiceImpl">
         <constructor-arg ref="deliveryRepository"/>
         <constructor-arg ref="deliveryMapper"/>
     </bean>
 
     <!-- Tour Service (Main business logic - Strategy pattern included) -->
     <bean id="tourService"
-          class="com.yallatawsil.backend.service.TourServiceImpl">
+          class="com.yallatawsil.backend.service.InterfaceEntityImpl.TourServiceImpl">
         <constructor-arg ref="tourRepository"/>
         <constructor-arg ref="vehicleRepository"/>
         <constructor-arg ref="warehouseRepository"/>
