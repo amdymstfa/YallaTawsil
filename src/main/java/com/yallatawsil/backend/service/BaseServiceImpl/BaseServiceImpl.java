@@ -1,8 +1,5 @@
 package com.yallatawsil.backend.service.BaseServiceImpl;
 
-import com.yallatawsil.backend.dto.request.VehicleRequestDTO;
-import com.yallatawsil.backend.dto.response.VehicleResponseDTO;
-import com.yallatawsil.backend.entity.Vehicle;
 import com.yallatawsil.backend.exception.ResourceNotFoundException;
 import com.yallatawsil.backend.service.BaseService.BaseService;
 import lombok.Getter;
@@ -89,10 +86,4 @@ public abstract class BaseServiceImpl<Entity, RequestDTO, ResponseDTO, ID>
     }
 
     protected abstract ID getEntityId(Entity entity);
-
-    protected abstract jakarta.persistence.Entity toEntity(VehicleRequestDTO dto);
-
-    protected abstract VehicleResponseDTO toResponseDTO(jakarta.persistence.Entity entity);
-
-    protected abstract void updateEntityFromDTO(VehicleRequestDTO dto, Vehicle entity);
 }
