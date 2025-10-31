@@ -127,4 +127,8 @@ public class Delivery {
             }
         }
     }
+
+    public void setPreferredTimeSlot(String preferredTimeSlot) {
+        this.preferredEndTime = preferredStartTime ;
+    }
 }
