@@ -3,7 +3,11 @@ package com.yallatawsil.backend.entity;
 import com.yallatawsil.backend.entity.enums.DeliveryStatus;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 
 import java.time.LocalDateTime;
 import java.time.LocalTime;

@@ -12,8 +12,9 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import lombok.*;
 
-@Setter
+
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder

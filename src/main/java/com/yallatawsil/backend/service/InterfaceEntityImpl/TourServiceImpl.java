@@ -10,6 +10,8 @@ import com.yallatawsil.backend.repository.*;
 import com.yallatawsil.backend.service.InterfaceEntity.TourService;
 import com.yallatawsil.backend.service.distance.DistanceCalculator;
 import com.yallatawsil.backend.service.optimizer.TourOptimizer;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
@@ -17,6 +19,8 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @Slf4j
+@Setter
+@Getter
 public class TourServiceImpl implements TourService {
 
     private final TourRepository tourRepository;

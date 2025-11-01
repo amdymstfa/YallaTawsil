@@ -4,16 +4,21 @@ import com.yallatawsil.backend.dto.request.DeliveryRequestDTO;
 import com.yallatawsil.backend.dto.response.DeliveryResponseDTO;
 import com.yallatawsil.backend.entity.Delivery;
 import com.yallatawsil.backend.entity.enums.DeliveryStatus;
+import com.yallatawsil.backend.exception.ResourceNotFoundException;
 import com.yallatawsil.backend.mapper.DeliveryMapper;
 import com.yallatawsil.backend.repository.DeliveryRepository;
 import com.yallatawsil.backend.service.BaseServiceImpl.BaseServiceImpl;
 import com.yallatawsil.backend.service.InterfaceEntity.DeliveryService;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Slf4j
+@Setter
+@Getter
 public class DeliveryServiceImp extends BaseServiceImpl<Delivery, DeliveryRequestDTO, DeliveryResponseDTO, Long>
 implements DeliveryService
 {
@@ -41,9 +46,9 @@ implements DeliveryService
     @Override
     protected void updateEntityFromDTO(DeliveryRequestDTO deliveryRequestDTO, Delivery delivery) {
 
-        delivery.setAddress(deliveryRequestDTO.getAddress());
-        delivery.setLatitude(deliveryRequestDTO.getLatitude());
         delivery.setLongitude(deliveryRequestDTO.getLongitude());
+        delivery.setLatitude(deliveryRequestDTO.getLatitude());
+        delivery.setAddress(deliveryRequestDTO.getAddress());
         delivery.setWeight(deliveryRequestDTO.getWeight());
         delivery.setVolume(deliveryRequestDTO.getVolume());
         delivery.setPreferredTimeSlot(deliveryRequestDTO.getPreferredTimeSlot());

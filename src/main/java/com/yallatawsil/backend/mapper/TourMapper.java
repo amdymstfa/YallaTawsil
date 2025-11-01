@@ -10,5 +10,5 @@ public interface TourMapper {
     // Convert dto to entity
     TourResponseDTO toResponseDTO(Tour tour);
     // Convert entity to dto
-    Mapper toEntity(TourRequestDTO dto);
+    Tour toEntity(TourRequestDTO dto);
 }

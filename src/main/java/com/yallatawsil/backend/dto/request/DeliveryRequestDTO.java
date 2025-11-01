@@ -3,8 +3,10 @@ package com.yallatawsil.backend.dto.request;
 import jakarta.validation.constraints.*;
 import lombok.*;
 
-@Setter
+
+
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder

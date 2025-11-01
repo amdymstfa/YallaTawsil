@@ -17,6 +17,7 @@ public class OptimizationComparisonDTO {
     private  Double distanceImprovement ;
     private Double improvementPercentage ;
     private long nnTime;
+    private Long cwTime;
 
     public void calculateImprovement(){
         if (nearestNeighborResult != null && clarkeWrightResult != null){
@@ -32,5 +33,9 @@ public class OptimizationComparisonDTO {
 
     public void setNnExecutionTimeMs(long nnTime) {
         this.nnTime = nnTime;
+    }
+
+    public void setCwExecutionTimeMs(long cwTime) {
+        this.cwTime = cwTime ;
     }
 }

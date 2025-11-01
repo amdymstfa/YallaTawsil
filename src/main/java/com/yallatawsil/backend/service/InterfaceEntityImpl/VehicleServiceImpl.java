@@ -8,13 +8,16 @@ import com.yallatawsil.backend.repository.VehicleRepository;
 import com.yallatawsil.backend.service.BaseServiceImpl.BaseServiceImpl;
 import com.yallatawsil.backend.service.InterfaceEntity.VehicleService;
 import jakarta.persistence.Entity;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
 import java.time.LocalDate;
 import java.util.List;
 
 @Slf4j
-
+@Setter
+@Getter
 public class VehicleServiceImpl extends BaseServiceImpl<Vehicle, VehicleRequestDTO, VehicleResponseDTO, Long>
         implements VehicleService {
 
@@ -33,7 +36,7 @@ public class VehicleServiceImpl extends BaseServiceImpl<Vehicle, VehicleRequestD
     }
 
     @Override
-    protected VehicleResponseDTO toResponseDTO(Entity entity) {
+    public VehicleResponseDTO toResponseDTO(Entity entity) {
         return null;
     }
 
