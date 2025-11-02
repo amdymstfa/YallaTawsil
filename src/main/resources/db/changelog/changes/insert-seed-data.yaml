@@ -22,5 +22,17 @@ databaseChangeLog:
                   name: name
                   value: "Main Warehouse"
               - column:
-                  name: location
-                  value: "123 Main Street"
+                  name: address
+                  value: "123 Main Street, Casablanca, Morocco"
+              - column:
+                  name: latitude
+                  valueNumeric: 33.5731
+              - column:
+                  name: longitude
+                  valueNumeric: -7.5898
+              - column:
+                  name: opening_time
+                  value: "06:00:00"
+              - column:
+                  name: closing_time
+                  value: "22:00:00"
