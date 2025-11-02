@@ -8,7 +8,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
@@ -87,14 +86,28 @@ public class Delivery {
         if (this.status == null) {
             this.status = DeliveryStatus.PENDING;
         }
+
+        // Validate on creation
+        validateConstraints();
     }
 
     /**
-     * Automatically update timestamp on modification
+     * Automatically update timestamp on modification and validate
      */
     @PreUpdate
     protected void onUpdate() {
         this.updatedAt = LocalDateTime.now();
+
+        // Validate on update
+        validateConstraints();
+    }
+
+    /**
+     * Validate on load
+     */
+    @PostLoad
+    private void onLoad() {
+        validateConstraints();
     }
 
     /**
@@ -114,9 +127,6 @@ public class Delivery {
     /**
      * Validate weight, volume and preferred time slot
      */
-    @PostLoad
-    @PrePersist
-    @PreUpdate
     private void validateConstraints() {
         if (this.weight != null && this.weight <= 0) {
             throw new IllegalStateException("Weight must be greater than 0");
@@ -133,6 +143,6 @@ public class Delivery {
     }
 
     public void setPreferredTimeSlot(String preferredTimeSlot) {
-        this.preferredEndTime = preferredStartTime ;
+        this.preferredEndTime = preferredStartTime;
     }
 }
