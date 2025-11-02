@@ -52,11 +52,9 @@ public class Warehouse {
     @Column(nullable = false)
     private Double longitude;
 
-//    @NotNull(message = "openingTime is required")
     @Column(nullable = false)
     private LocalTime openingTime;
 
-//    @NotNull(message = "closingTime is required")
     @Column(nullable = false)
     private LocalTime closingTime;
 
