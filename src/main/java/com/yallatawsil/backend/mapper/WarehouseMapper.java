@@ -1,4 +1,4 @@
-package com.yallatawsil.backend.mapper ;
+package com.yallatawsil.backend.mapper;
 
 import com.yallatawsil.backend.dto.request.WarehouseRequestDTO;
 import com.yallatawsil.backend.dto.response.WarehouseResponseDTO;
