@@ -12,14 +12,35 @@ databaseChangeLog:
                   autoIncrement: true
                   constraints:
                     primaryKey: true
+                    nullable: false
               - column:
                   name: name
-                  type: VARCHAR(100)
+                  type: VARCHAR(255)
                   constraints:
                     nullable: false
               - column:
-                  name: location
-                  type: VARCHAR(255)
+                  name: address
+                  type: VARCHAR(500)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: latitude
+                  type: DOUBLE
+                  constraints:
+                    nullable: false
+              - column:
+                  name: longitude
+                  type: DOUBLE
+                  constraints:
+                    nullable: false
+              - column:
+                  name: opening_time
+                  type: TIME
+                  constraints:
+                    nullable: false
+              - column:
+                  name: closing_time
+                  type: TIME
                   constraints:
                     nullable: false
               - column:
