@@ -53,11 +53,11 @@ public class Delivery {
     @Column(nullable = false)
     private Double volume;
 
-    @NotNull(message = "Preferred start time is required")
+    // REMOVE @NotNull - will be set in @PrePersist
     @Column
     private LocalTime preferredStartTime;
 
-    @NotNull(message = "Preferred end time is required")
+    // REMOVE @NotNull - will be set in @PrePersist
     @Column
     private LocalTime preferredEndTime;
 
@@ -85,6 +85,14 @@ public class Delivery {
         // Set default status if not provided
         if (this.status == null) {
             this.status = DeliveryStatus.PENDING;
+        }
+
+        // Set default time window if not provided (full business day)
+        if (this.preferredStartTime == null) {
+            this.preferredStartTime = LocalTime.of(8, 0);
+        }
+        if (this.preferredEndTime == null) {
+            this.preferredEndTime = LocalTime.of(18, 0);
         }
 
         // Validate on creation
@@ -142,7 +150,35 @@ public class Delivery {
         }
     }
 
-    public void setPreferredTimeSlot(String preferredTimeSlot) {
-        this.preferredEndTime = preferredStartTime;
+    /**
+     * Set preferred time slot based on enum value
+     * @param timeSlot MORNING, AFTERNOON, or EVENING
+     */
+    public void setPreferredTimeSlot(String timeSlot) {
+        if (timeSlot == null) {
+            // Default to full business day
+            this.preferredStartTime = LocalTime.of(8, 0);
+            this.preferredEndTime = LocalTime.of(18, 0);
+            return;
+        }
+
+        switch (timeSlot.toUpperCase()) {
+            case "MORNING":
+                this.preferredStartTime = LocalTime.of(8, 0);
+                this.preferredEndTime = LocalTime.of(12, 0);
+                break;
+            case "AFTERNOON":
+                this.preferredStartTime = LocalTime.of(12, 0);
+                this.preferredEndTime = LocalTime.of(17, 0);
+                break;
+            case "EVENING":
+                this.preferredStartTime = LocalTime.of(17, 0);
+                this.preferredEndTime = LocalTime.of(21, 0);
+                break;
+            default:
+                // Full business day for unknown values
+                this.preferredStartTime = LocalTime.of(8, 0);
+                this.preferredEndTime = LocalTime.of(18, 0);
+        }
     }
 }
