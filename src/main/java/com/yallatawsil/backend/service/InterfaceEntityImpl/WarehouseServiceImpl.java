@@ -33,25 +33,21 @@ public class WarehouseServiceImpl extends BaseServiceImpl<Warehouse, WarehouseRe
 //    }
 @Override
 protected Warehouse toEntity(WarehouseRequestDTO dto) {
-    try {
-        if (warehouseRepository.existsByName(dto.getName())) {
-            throw new IllegalArgumentException("Warehouse with name " + dto.getName() + " already exists");
-        }
-
-        Warehouse warehouse = warehouseMapper.toEntity(dto);
-
-        if (warehouse.getOpeningTime() == null) {
-            warehouse.setOpeningTime(LocalTime.of(6, 0));
-        }
-        if (warehouse.getClosingTime() == null) {
-            warehouse.setClosingTime(LocalTime.of(22, 0));
-        }
-
-        return warehouse;
-    } catch (Exception e) {
-        log.error("Error while converting Warehouse DTO to Entity: {}", e.getMessage(), e);
-        throw e;
+    if (warehouseRepository.existsByName(dto.getName())) {
+        throw new IllegalArgumentException("Warehouse with name " + dto.getName() + " already exists");
     }
+
+    // Set defaults on DTO if null
+    if (dto.getOpeningTime() == null) {
+        dto.setOpeningTime(LocalTime.of(6, 0));
+    }
+    if (dto.getClosingTime() == null) {
+        dto.setClosingTime(LocalTime.of(22, 0));
+    }
+
+    // Now map - all fields will have values
+
+    return warehouseMapper.toEntity(dto);
 }
 
 
