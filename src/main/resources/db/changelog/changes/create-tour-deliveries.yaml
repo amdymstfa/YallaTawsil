@@ -1,10 +1,10 @@
 databaseChangeLog:
   - changeSet:
-      id: 003-create-deliveries
+      id: 005-create-tour-deliveries
       author: moustapha
       changes:
         - createTable:
-            tableName: deliveries
+            tableName: tour_deliveries
             columns:
               - column:
                   name: id
@@ -13,25 +13,27 @@ databaseChangeLog:
                   constraints:
                     primaryKey: true
               - column:
-                  name: vehicle_id
+                  name: tour_id
                   type: BIGINT
                   constraints:
                     nullable: false
               - column:
-                  name: warehouse_id
+                  name: delivery_id
                   type: BIGINT
                   constraints:
                     nullable: false
               - column:
-                  name: destination
-                  type: VARCHAR(255)
+                  name: sequence_order
+                  type: INT
                   constraints:
                     nullable: false
               - column:
-                  name: scheduled_at
+                  name: distance_from_previous
+                  type: DOUBLE
+              - column:
+                  name: estimated_arrival
                   type: TIMESTAMP
               - column:
-                  name: status
-                  type: VARCHAR(50)
-                  constraints:
-                    nullable: false
+                  name: created_at
+                  type: TIMESTAMP
+                  defaultValueComputed: CURRENT_TIMESTAMP
