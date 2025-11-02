@@ -36,4 +36,5 @@ public class DeliveryRequestDTO {
     private String preferredTimeSlot;
 
     private String notes;
+
 }
