@@ -19,13 +19,13 @@ import java.util.stream.Collectors;
 @Slf4j
 @Setter
 @Getter
-public class DeliveryServiceImp extends BaseServiceImpl<Delivery, DeliveryRequestDTO, DeliveryResponseDTO, Long>
+public class DeliveryServiceImpl extends BaseServiceImpl<Delivery, DeliveryRequestDTO, DeliveryResponseDTO, Long>
 implements DeliveryService
 {
     private final DeliveryRepository deliveryRepository;
     private final DeliveryMapper deliveryMapper ;
 
-    public DeliveryServiceImp(DeliveryRepository deliveryRepository, DeliveryMapper deliveryMapper){
+    public DeliveryServiceImpl(DeliveryRepository deliveryRepository, DeliveryMapper deliveryMapper){
         super(deliveryRepository, "Delivery");
         this.deliveryRepository = deliveryRepository ;
         this.deliveryMapper = deliveryMapper ;
