@@ -12,25 +12,44 @@ databaseChangeLog:
                   autoIncrement: true
                   constraints:
                     primaryKey: true
+                    nullable: false
+
+              - column:
+                  name: type
+                  type: VARCHAR(50)
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: max_weight
+                  type: DOUBLE
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: max_volume
+                  type: DOUBLE
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: max_deliveries
+                  type: DOUBLE
+                  constraints:
+                    nullable: false
+
               - column:
                   name: license_plate
                   type: VARCHAR(20)
                   constraints:
                     nullable: false
-              - column:
-                  name: model
-                  type: VARCHAR(50)
-                  constraints:
-                    nullable: false
-              - column:
-                  name: capacity
-                  type: INT
-                  constraints:
-                    nullable: false
+                    unique: true
+
               - column:
                   name: created_at
                   type: TIMESTAMP
                   defaultValueComputed: CURRENT_TIMESTAMP
+
               - column:
                   name: updated_at
                   type: TIMESTAMP
