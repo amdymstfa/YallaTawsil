@@ -3,21 +3,62 @@ databaseChangeLog:
       id: 007-insert-seed-data
       author: moustapha
       changes:
+        # ===========================
+        # 🚗 Vehicles
+        # ===========================
         - insert:
             tableName: vehicles
             columns:
               - column:
+                  name: id
+                  valueNumeric: 1
+              - column:
+                  name: type
+                  value: "TRUCK"
+              - column:
+                  name: max_weight
+                  valueNumeric: 5000
+              - column:
+                  name: max_volume
+                  valueNumeric: 50
+              - column:
+                  name: max_deliveries
+                  valueNumeric: 10
+              - column:
                   name: license_plate
-                  value: "ABC123"
+                  value: "ABC-123"
+
+        - insert:
+            tableName: vehicles
+            columns:
               - column:
-                  name: model
-                  value: "Truck"
+                  name: id
+                  valueNumeric: 2
               - column:
-                  name: capacity
-                  valueNumeric: 1000
+                  name: type
+                  value: "VAN"
+              - column:
+                  name: max_weight
+                  valueNumeric: 2000
+              - column:
+                  name: max_volume
+                  valueNumeric: 20
+              - column:
+                  name: max_deliveries
+                  valueNumeric: 6
+              - column:
+                  name: license_plate
+                  value: "XYZ-456"
+
+        # ===========================
+        # 🏭 Warehouses
+        # ===========================
         - insert:
             tableName: warehouses
             columns:
+              - column:
+                  name: id
+                  valueNumeric: 1
               - column:
                   name: name
                   value: "Main Warehouse"
@@ -36,3 +77,40 @@ databaseChangeLog:
               - column:
                   name: closing_time
                   value: "22:00:00"
+
+        # ===========================
+        # 🚚 Deliveries
+        # ===========================
+        - insert:
+            tableName: deliveries
+            columns:
+              - column:
+                  name: id
+                  valueNumeric: 1
+              - column:
+                  name: address
+                  value: "Avenue Hassan II, Casablanca, Morocco"
+              - column:
+                  name: latitude
+                  valueNumeric: 33.5899
+              - column:
+                  name: longitude
+                  valueNumeric: -7.6039
+              - column:
+                  name: weight
+                  valueNumeric: 150
+              - column:
+                  name: volume
+                  valueNumeric: 10
+              - column:
+                  name: preferred_start_time
+                  value: "08:00:00"
+              - column:
+                  name: preferred_end_time
+                  value: "12:00:00"
+              - column:
+                  name: status
+                  value: "PENDING"
+              - column:
+                  name: notes
+                  value: "Fragile items"
