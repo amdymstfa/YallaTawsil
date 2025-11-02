@@ -26,7 +26,7 @@
     <!-- TRANSACTION MANAGEMENT                                       -->
     <!-- Enables annotation-based transaction management (@Transactional) -->
     <!-- ============================================================ -->
-    <tx:annotation-driven/>
+<!--    <tx:annotation-driven/>-->
 
     <!-- ============================================================ -->
     <!-- DISTANCE CALCULATOR SERVICE                                  -->
@@ -62,9 +62,7 @@
 
     <bean id="tourMapper"
           class="com.yallatawsil.backend.mapper.TourMapperImpl">
-        <constructor-arg ref="deliveryMapper"/>
-        <constructor-arg ref="vehicleMapper"/>
-        <constructor-arg ref="warehouseMapper"/>
+
     </bean>
 
     <!-- ============================================================ -->
@@ -117,27 +115,27 @@
     <!-- ============================================================ -->
 
     <!-- Vehicle Controller -->
-    <bean id="vehicleController"
-          class="com.yallatawsil.backend.controller.VehicleController">
-        <constructor-arg ref="vehicleService"/>
-    </bean>
+<!--    <bean id="vehicleController"-->
+<!--          class="com.yallatawsil.backend.controller.VehicleController">-->
+<!--        <constructor-arg ref="vehicleService"/>-->
+<!--    </bean>-->
 
     <!-- Warehouse Controller -->
-    <bean id="warehouseController"
-          class="com.yallatawsil.backend.controller.WarehouseController">
-        <constructor-arg ref="warehouseService"/>
-    </bean>
+<!--    <bean id="warehouseController"-->
+<!--          class="com.yallatawsil.backend.controller.WarehouseController">-->
+<!--        <constructor-arg ref="warehouseService"/>-->
+<!--    </bean>-->
 
     <!-- Delivery Controller -->
-    <bean id="deliveryController"
-          class="com.yallatawsil.backend.controller.DeliveryController">
-        <constructor-arg ref="deliveryService"/>
-    </bean>
+<!--    <bean id="deliveryController"-->
+<!--          class="com.yallatawsil.backend.controller.DeliveryController">-->
+<!--        <constructor-arg ref="deliveryService"/>-->
+<!--    </bean>-->
 
     <!-- Tour Controller -->
-    <bean id="tourController"
-          class="com.yallatawsil.backend.controller.TourController">
-        <constructor-arg ref="tourService"/>
-    </bean>
+<!--    <bean id="tourController"-->
+<!--          class="com.yallatawsil.backend.controller.TourController">-->
+<!--        <constructor-arg ref="tourService"/>-->
+<!--    </bean>-->
 
 </beans>
